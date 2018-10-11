@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Bigbig1:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Bigbig1_jar</output-path>
-    <root id="archive" name="Bigbig1.jar">
-      <element id="module-output" name="Bigbig1" />
-    </root>
-  </artifact>
-</component>
