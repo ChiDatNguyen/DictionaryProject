@@ -64,6 +64,8 @@ public class DictionaryCommandline {
         System.out.println("2.Show all words of this dictionary");
         System.out.println("3.Delete word");
         System.out.println("4.Look up word");
+        System.out.println("5.Fix word");
+        System.out.println("6.Searcher.(search all words start with the input string)");
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
         switch (num){
@@ -81,9 +83,17 @@ public class DictionaryCommandline {
             case 4 :
                 dictionaryManagement.dictionaryLookup(dictionary.dictArr);
                 break;
+            case 5:
+                dictionaryManagement.fixWord(dictionary);
+                dictionaryManagement.dictionaryExportToFile(dictionary);
+                break;
+            case 6:
+                dictionarySeacher();
+                break;
             default:
                 System.out.println("Invalid");
         }
 
+        dictionary.dictArr.clear();
     }
 }

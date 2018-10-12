@@ -31,7 +31,7 @@ public class DictionaryManagement {
 
     public Dictionary insertFromFile(Dictionary dictionary) throws FileNotFoundException {
 
-        Scanner sc = new Scanner(new File("E:\\IntelliJ IDEA\\IdeaProjects\\lab5\\Big1\\Data/VN-EN Dict.txt")).useDelimiter("\\s*:\\s*");
+        Scanner sc = new Scanner(new File("src\\com\\company\\VN-ENDict.txt")).useDelimiter("\\s*:\\s*");
 
         while (sc.hasNext()) {
             String vn = sc.next();
@@ -73,7 +73,7 @@ public class DictionaryManagement {
     {
         try
         {
-            File file=new File("E:\\IntelliJ IDEA\\IdeaProjects\\lab5\\Big1\\Data/VN-EN Dict.txt");
+            File file=new File("src\\com\\company\\VN-ENDict.txt");
             FileWriter fw= new FileWriter(file);
 
             for(int i=0;i<dictionary.dictArr.size();i++)
@@ -83,7 +83,7 @@ public class DictionaryManagement {
             fw.close();
         }
         catch(Exception ex){
-            System.out.println("Error: " +ex);
+            ex.printStackTrace();
         }
     }
     public void deleteWord (Dictionary dictionary){
@@ -99,8 +99,43 @@ public class DictionaryManagement {
             }
         }
         catch (Exception ex){
-            System.out.println("removed");;
+            System.out.println("removed");
         }
+    }
+    public void fixWord (Dictionary dictionary){
+        try{
+            Scanner sc = new Scanner(System.in);
+            System.out.println("insert the word you want to fix in English");
+            String word = sc.nextLine();
+            int stIndex = 0;
+            int endIndex = dictionary.dictArr.size();
+            int index = (stIndex + endIndex)/2;
+            while ((index != stIndex && index != endIndex)){
+                if (dictionary.dictArr.get(index).getWord_target().compareTo(word) > 0){
+                    endIndex = index;
+                    index = (stIndex + endIndex)/2;
+                }
+                else {
+                    stIndex = index;
+                    index = (stIndex + endIndex)/2;
+                }
+            }
+            if( !word.equalsIgnoreCase(dictionary.dictArr.get(index).getWord_target()))
+                System.out.println("Can not find this word");
+            else
+            {
+                System.out.println("Found!"+dictionary.dictArr.get(index).getWord_target()+" : "+dictionary.dictArr.get(index).getWord_explain());
+                System.out.println("Fix the English word: " );
+                String en = sc.nextLine();
+                System.out.println("Fix the Vietnamese word: " );
+                String vn = sc.nextLine();
+                Word fixWord = new Word(en,vn);
+                dictionary.dictArr.set(index,fixWord);
 
+            }
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }
