@@ -31,7 +31,7 @@ public class DictionaryManagement {
 
     public Dictionary insertFromFile(Dictionary dictionary) throws FileNotFoundException {
 
-        Scanner sc = new Scanner(new File("src\\com\\company\\VN-ENDict.txt")).useDelimiter("\\s*:\\s*");
+        Scanner sc = new Scanner(new File("Big1\\src\\com\\company\\VN-ENDict.txt")).useDelimiter("\\s*:\\s*");
 
         while (sc.hasNext()) {
             String vn = sc.next();
@@ -73,7 +73,7 @@ public class DictionaryManagement {
     {
         try
         {
-            File file=new File("src\\com\\company\\VN-ENDict.txt");
+            File file=new File("Big1\\src\\com\\company\\VN-ENDict.txt");
             FileWriter fw= new FileWriter(file);
 
             for(int i=0;i<dictionary.dictArr.size();i++)

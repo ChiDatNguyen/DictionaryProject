@@ -22,7 +22,7 @@ public class Main {
                 break;
             }
             if (i!=1 && i!=2) {
-                System.out.println("Invalid.Program will be exit now\n Goodbye");
+                System.out.println("Invalid.Program will be exit right now\nGoodbye");
                 break;
             }
 
